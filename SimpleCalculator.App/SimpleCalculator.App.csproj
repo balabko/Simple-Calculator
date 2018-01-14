@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5A86AF4C-759D-424D-9B1E-32B8C5107FEB}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>SimpleCalculator.App</RootNamespace>
+    <AssemblyName>SimpleCalculator.App</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Ninject, Version=3.3.4.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.3.4\lib\net45\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CalculatorStreamReader\CalculatorStreamReaderState.cs" />
+    <Compile Include="CalculatorStreamReader\CalculatorStreamReaderStateExecutor\BaseStateExecutor.cs" />
+    <Compile Include="CalculatorStreamReader\CalculatorStreamReaderStateExecutor\IStateExecutor.cs" />
+    <Compile Include="CalculatorStreamReader\CalculatorStreamReaderStateExecutor\IStateExecutorResult.cs" />
+    <Compile Include="CalculatorStreamReader\CalculatorStreamReaderStateExecutor\IStateExecutorFactory.cs" />
+    <Compile Include="CalculatorStreamReader\CalculatorStreamReaderStateExecutor\ReadDigitStateExecutor.cs" />
+    <Compile Include="CalculatorStreamReader\CalculatorStreamReaderStateExecutor\ReadOperationStateExecutor.cs" />
+    <Compile Include="CalculatorStreamReader\CalculatorStreamReaderStateExecutor\StateExecutorFactory.cs" />
+    <Compile Include="CalculatorStreamReader\CalculatorStreamReaderStateExecutor\StateExecutorResult.cs" />
+    <Compile Include="Helper\Helper.cs" />
+    <Compile Include="CalculatorStreamReader\ICalculatorStreamReader.cs" />
+    <Compile Include="CalculatorStreamReader\CalculatorStreamReader.cs" />
+    <Compile Include="Helper\IHelper.cs" />
+    <Compile Include="Infrastructure\ULongCalculatorNinjectModule.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SimpleCalculator\SimpleCalculator.csproj">
+      <Project>{5153a2e2-7b7b-447e-b541-573be3138b46}</Project>
+      <Name>SimpleCalculator</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
